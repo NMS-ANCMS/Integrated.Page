@@ -3,13 +3,13 @@ import AuthLayout from "./layout/AuthLayout";
 import Login from "./pages/auth/login/Login";
 import Register from "./pages/auth/register/Register";
 import PanelLayout from "./layout/PanelLayout";
-import Dashboard from "./pages/dashboard/Dashboard";
+import Chat from "./pages/chat/Chat";
 
 const router = createBrowserRouter([
   {
     path: "/panel",
     element: <PanelLayout />,
-    children: [{ path: "dashboard", element: <Dashboard /> }],
+    children: [{ path: "chat", element: <Chat /> }],
   },
 
   {

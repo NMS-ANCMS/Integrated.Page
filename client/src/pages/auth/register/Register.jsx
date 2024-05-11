@@ -3,6 +3,8 @@ import LogoIcon from "@assets/svg/logo1.svg";
 import LoginFormInput from "../../../components/input/LoginFormInput";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import Modal from "../../../components/modal/Modal";
+import QRCodeImg from "../../../assets/qr.png";
 
 function Register() {
   // states
@@ -10,6 +12,7 @@ function Register() {
   const [is_confirmed, setIs_confirmed] = useState(false);
   const [reqError, setReqError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showQR, setShowQR] = useState(false);
 
   // useForm for save values
   const {
@@ -59,6 +62,7 @@ function Register() {
     };
     if (is_confirmed) {
       console.log(formType === "genuine" ? genuinePayload : legalPayload);
+      setShowQR(true);
     } else {
       setReqError("با قوانین و مقررات سامانه موافقت کنید");
     }
@@ -214,6 +218,15 @@ function Register() {
           </Link>
         </p>
       </div>
+
+      {/* Modal */}
+
+      <Modal isOpen={showQR} close={setShowQR} title={"احرازهویت"}>
+        <div className=" flex flex-col items-center">
+          <p>برای احراز هویت کد زیر را در موبایل خود اسکن کنید</p>
+          <img src={QRCodeImg} alt="" width={300} height={300} />
+        </div>
+      </Modal>
     </>
   );
 }
